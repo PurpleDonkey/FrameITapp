@@ -1,0 +1,15 @@
+<CustomFileChooserIconView>:
+    size_hint_y: None
+    height: "500dp"
+    pos_hint: {"center_y": .5, "center_x": .5}
+    filters: ["*.png", "*.jpg", "*.jpeg"]
+
+    MDRaisedButton:
+        text: "Cancel"
+        pos_hint: {"center_x": .2, "center_y": .1}
+        on_release: root.dismiss()
+
+    MDRaisedButton:
+        text: "Select"
+        pos_hint: {"center_x": .8, "center_y": .1}
+        on_release: root.select()

@@ -1,0 +1,60 @@
+#:kivy 2.3.0
+
+MDScreen:
+    name: "welcome_screen"
+    left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
+    elevation: 10
+
+    MDScreen:
+        title: "My App"
+        elevation: 10
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+        padding: 10
+
+        Image:
+            id: selected_image
+            source: ''
+        VideoPlayer:
+            id: selected_video
+            source: ''
+
+    MDNavigationDrawer:
+        id: nav_drawer
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            Label:
+                id: username_label
+                text: app.logged_in_username
+                halign: "left"
+                valign: "center"
+
+            ScrollView:
+                MDList:
+                    OneLineListItem:
+                        text: "Profile"
+                        on_press: app.show_profile()
+
+                    OneLineListItem:
+                        text: "Gallery"
+                        on_press: app.show_gallery()
+
+                    OneLineListItem:
+                        text: "Add Images"
+                        on_press: app.show_add_images()
+                        
+                    Widget: 
+                        size_hint_y: None
+                        height: "40dp"
+
+                    OneLineListItem:
+                        text: "Logout"
+                        on_press: app.logout()
+    MDRaisedButton:
+        text: "Select File"
+        pos_hint: {"center_x": 0.5}
+        on_press: app.show_file_chooser('file')
